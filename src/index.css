@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce 3s infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 1.5s ease-out forwards;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Portfolio Design System - Data Science & AI Theme */
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    /* Brand Identity */
+    --primary: 203 69% 17%; /* Deep Navy #0A2540 */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 203 69% 25%;
+
+    /* AI Accent Colors */
+    --accent: 258 84% 58%; /* Purple #7C3AED */
+    --accent-foreground: 0 0% 100%;
+    --accent-glow: 258 84% 68%;
+
+    /* Neutral Palette */
+    --secondary: 210 20% 98%; /* Light Gray #F8FAFC */
+    --secondary-foreground: 203 69% 17%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 258 84% 58%;
+
+    /* Design System Tokens */
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
+
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 40px hsl(var(--accent-glow) / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(var(--primary) / 0.1);
+    --shadow-elevated: 0 20px 60px -20px hsl(var(--primary) / 0.2);
+
+    /* Typography Scale */
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Mode - Data Science Theme */
+    --background: 203 69% 8%; /* Darker navy */
+    --foreground: 210 40% 98%;
+
+    --card: 203 69% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --primary: 258 84% 58%; /* Purple in dark mode */
+    --primary-foreground: 203 69% 8%;
+    --primary-glow: 258 84% 68%;
+
+    --secondary: 203 69% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 203 69% 12%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 258 84% 68%; /* Brighter purple for dark mode */
+    --accent-foreground: 203 69% 8%;
+    --accent-glow: 258 84% 78%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 203 69% 20%;
+    --input: 203 69% 15%;
+    --ring: 258 84% 68%;
+
+    /* Dark mode gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--accent)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
+    --shadow-glow: 0 0 40px hsl(var(--accent-glow) / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+
+  .hero-text {
+    font-family: var(--font-display);
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer components {
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--gradient-accent);
+    border-radius: 4px;
+  }
+
+  /* Glow effects */
+  .glow-accent {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-on-hover:hover {
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition-smooth);
+  }
+
+  /* Card effects */
+  .card-elevated {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--shadow-elevated);
+    transform: translateY(-4px);
+  }
+
+  /* Progress bars */
+  .progress-bar {
+    @apply h-2 bg-secondary rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-accent to-accent-glow rounded-full transition-all duration-1000 ease-out;
+  }
+
+  /* Timeline */
+  .timeline-line {
+    @apply absolute left-6 top-0 w-0.5 h-full bg-gradient-to-b from-accent to-transparent;
+  }
+
+  .timeline-dot {
+    @apply absolute left-4 w-4 h-4 bg-accent rounded-full border-2 border-background glow-accent;
+  }
+
+  /* Animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  /* Typography utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient text utilities */
+  .gradient-text {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Backdrop utilities */
+  .backdrop-glass {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: hsl(var(--background) / 0.8);
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--accent) / 0.6);
+  }
+}
